@@ -5,9 +5,9 @@
   "branch": "claude/prompt-engineering-book-011CV2DhrMZWW9vZk5sZ3h1k",
   "phase": "content_development",
   "progress": {
-    "chapters_completed": 5,
+    "chapters_completed": 6,
     "chapters_total": 10,
-    "completion_percentage": 50,
+    "completion_percentage": 60,
     "labs_completed": 11,
     "labs_total_estimated": 20
   },
@@ -63,6 +63,14 @@
       "word_count": 6500,
       "citations": 4,
       "labs": 1,
+      "status": "complete"
+    },
+    {
+      "name": "Chapter 6: Claude MCP & Tool Use",
+      "path": "/book/ch06-claude-mcp.md",
+      "word_count": 6500,
+      "citations": 1,
+      "labs": 0,
       "status": "complete"
     },
     {
@@ -131,7 +139,7 @@
     {
       "name": "Bibliography",
       "path": "/book/book.bib",
-      "entries": 52,
+      "entries": 53,
       "status": "complete"
     },
     {
@@ -147,9 +155,8 @@
   ],
   "pending_deliverables": [
     {
-      "name": "Chapters 6-10",
+      "name": "Chapters 7-10",
       "items": [
-        "ch06-claude.md",
         "ch07-agentic-systems.md",
         "ch08-security.md",
         "ch09-observability.md",
@@ -175,11 +182,11 @@
     }
   ],
   "quality_metrics": {
-    "total_words": 31500,
-    "total_citations": 52,
+    "total_words": 38000,
+    "total_citations": 53,
     "total_labs": 11,
     "total_lab_lines": 5880,
-    "citation_density": 0.0017,
+    "citation_density": 0.0014,
     "code_completeness": "100%",
     "reproducibility": "high",
     "labs_with_tests": 1,
@@ -285,10 +292,11 @@
   },
   "next_steps": [
     "Test build system (make install && make all)",
-    "Begin Chapter 6 (Claude Skills, MCP & Hooks)",
     "Begin Chapter 7 (Agentic Systems & Orchestration)",
     "Begin Chapter 8 (Security & OWASP LLM Top 10)",
-    "Add unit tests for Chapters 2-5 labs",
+    "Begin Chapter 9 (Observability & Evaluation)",
+    "Begin Chapter 10 (Production Best Practices)",
+    "Add unit tests for Chapters 2-6 labs",
     "Set up CI/CD pipeline"
   ],
   "curator_script_compliance": {
@@ -306,6 +314,7 @@
     "Ready for production use: just swap mock functions for real APIs",
     "Chapter 4 includes production deployment patterns and TCO analysis",
     "Chapter 5 includes OpenAPI schema validator for ChatGPT Actions",
-    "Total deliverable: 31,500 words, 52 citations, 11 complete labs, 5,880 lines of code"
+    "Chapter 6 covers Claude MCP protocol and tool use patterns",
+    "Total deliverable: 38,000 words, 53 citations, 11 complete labs, 5,880 lines of code"
   ]
 }
