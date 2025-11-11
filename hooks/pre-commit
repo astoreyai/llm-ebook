@@ -1,0 +1,54 @@
+#!/bin/bash
+# Pre-commit hook for content quality validation
+# Install: ln -s ../../hooks/pre-commit .git/hooks/pre-commit
+
+set -e
+
+echo "Running pre-commit quality checks..."
+
+# Check for emojis in staged markdown files
+echo "  Checking for decorative emojis..."
+if git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | xargs grep -E "🎉|✅|❌|⏳|📊|💻|📚|📄|📋|🚀|🎊" 2>/dev/null; then
+    echo "ERROR: Found decorative emojis in staged files"
+    echo "Please remove emojis before committing"
+    exit 1
+fi
+
+# Check for AI language patterns
+echo "  Checking for AI language patterns..."
+PATTERNS_FOUND=0
+
+if git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | xargs grep -l "Moreover," 2>/dev/null; then
+    echo "WARNING: Found 'Moreover' pattern in staged files"
+    PATTERNS_FOUND=1
+fi
+
+if git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | xargs grep -l "Furthermore," 2>/dev/null; then
+    echo "WARNING: Found 'Furthermore' pattern in staged files"
+    PATTERNS_FOUND=1
+fi
+
+if [ $PATTERNS_FOUND -eq 1 ]; then
+    echo "WARNING: AI language patterns detected (proceeding anyway)"
+fi
+
+# Check for TODO markers in book chapters
+echo "  Checking for TODO markers..."
+if git diff --cached --name-only --diff-filter=ACM | grep 'book/ch.*\.md$' | xargs grep -E "TODO|STUB|FIXME" 2>/dev/null | grep -v "todolist\|TodoWrite"; then
+    echo "ERROR: Found TODO/STUB markers in book chapters"
+    echo "Please complete or remove before committing"
+    exit 1
+fi
+
+# Check for unclosed code blocks
+echo "  Validating markdown structure..."
+for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.md$'); do
+    BACKTICKS=$(grep -c '```' "$file" || true)
+    if [ $((BACKTICKS % 2)) -ne 0 ]; then
+        echo "ERROR: $file has unclosed code blocks"
+        exit 1
+    fi
+done
+
+echo "All pre-commit checks passed!"
+exit 0

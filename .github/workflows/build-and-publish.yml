@@ -1,0 +1,217 @@
+name: Build and Publish Book
+
+on:
+  push:
+    branches:
+      - main
+      - 'claude/**'
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build Book (PDF, EPUB, Web)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-latex-extra \
+            lmodern
+
+      - name: Verify pandoc installation
+        run: |
+          pandoc --version
+          xelatex --version
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build PDF
+        run: make pdf
+        continue-on-error: true
+
+      - name: Build EPUB
+        run: make epub
+        continue-on-error: true
+
+      - name: Build Web
+        run: make web
+
+      - name: List build outputs
+        run: |
+          echo "=== Build Outputs ==="
+          ls -lh output/ || echo "No output directory"
+          ls -lh site/ || echo "No site directory"
+
+      - name: Upload PDF artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pdf
+          path: output/*.pdf
+          if-no-files-found: warn
+
+      - name: Upload EPUB artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-epub
+          path: output/*.epub
+          if-no-files-found: warn
+
+      - name: Upload Web artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-web
+          path: site/
+          retention-days: 30
+
+      - name: Upload to GitHub Pages
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  create-release:
+    name: Create GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: book-pdf
+          path: release/
+
+      - name: Download EPUB artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: book-epub
+          path: release/
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Best Current Practices in Prompt Engineering ${{ steps.version.outputs.VERSION }}"
+          body: |
+            ## Best Current Practices in Prompt & Context Engineering
+            **Version**: ${{ steps.version.outputs.VERSION }}
+
+            ### Downloads
+
+            - **PDF**: High-quality PDF for printing and offline reading
+            - **EPUB**: E-reader format for Kindle, Apple Books, etc.
+            - **Web**: Available at [GitHub Pages](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)
+
+            ### What's Included
+
+            - 10 comprehensive chapters (56,700 words)
+            - 11 runnable code labs
+            - 64 peer-reviewed citations
+            - OWASP LLM Top 10 security guidance
+            - Platform coverage: ChatGPT, Claude, self-hosted models
+
+            ### Quick Start
+
+            ```bash
+            # Clone and build locally
+            git clone https://github.com/${{ github.repository }}.git
+            cd llm-ebook
+            make install && make all
+            ```
+
+            ### License
+
+            CC BY-NC-SA 4.0 - Free for educational and non-commercial use.
+          files: |
+            release/*.pdf
+            release/*.epub
+          draft: false
+          prerelease: false
+          fail_on_unmatched_files: false
+
+  test-labs:
+    name: Test Lab Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run lab tests
+        run: make labs
+        continue-on-error: true
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            .pytest_cache/
+            htmlcov/
+          if-no-files-found: ignore

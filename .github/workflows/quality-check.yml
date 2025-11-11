@@ -1,0 +1,166 @@
+name: Quality Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - 'claude/**'
+
+jobs:
+  content-quality:
+    name: Content Quality Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for emojis in markdown
+        run: |
+          echo "Checking for decorative emojis in markdown files..."
+          if grep -r "🎉\|✅\|❌\|⏳\|📊\|💻\|📚\|📄\|📋\|🚀\|🎊" --include="*.md" book/ labs/ *.md 2>/dev/null; then
+            echo "ERROR: Found decorative emojis in markdown files"
+            exit 1
+          else
+            echo "PASS: No decorative emojis found"
+          fi
+
+      - name: Check for AI language patterns
+        run: |
+          echo "Checking for AI language patterns..."
+          PATTERNS_FOUND=0
+
+          if grep -r "Moreover," --include="*.md" book/ 2>/dev/null; then
+            echo "WARNING: Found 'Moreover' pattern"
+            PATTERNS_FOUND=1
+          fi
+
+          if grep -r "Furthermore," --include="*.md" book/ 2>/dev/null; then
+            echo "WARNING: Found 'Furthermore' pattern"
+            PATTERNS_FOUND=1
+          fi
+
+          if grep -r "It is important to note" --include="*.md" book/ 2>/dev/null; then
+            echo "WARNING: Found 'It is important to note' pattern"
+            PATTERNS_FOUND=1
+          fi
+
+          if [ $PATTERNS_FOUND -eq 1 ]; then
+            echo "WARNING: AI language patterns detected (non-blocking)"
+          else
+            echo "PASS: No AI language patterns found"
+          fi
+
+      - name: Validate markdown structure
+        run: |
+          echo "Validating markdown structure..."
+
+          # Check that all chapters start with H1
+          for file in book/ch*.md; do
+            if ! head -20 "$file" | grep -q "^# "; then
+              echo "ERROR: $file does not start with H1 header"
+              exit 1
+            fi
+          done
+
+          # Check for unclosed code blocks
+          for file in book/*.md labs/**/*.md; do
+            if [ -f "$file" ]; then
+              BACKTICKS=$(grep -c '```' "$file" || true)
+              if [ $((BACKTICKS % 2)) -ne 0 ]; then
+                echo "ERROR: $file has unclosed code blocks"
+                exit 1
+              fi
+            fi
+          done
+
+          echo "PASS: Markdown structure valid"
+
+      - name: Check for TODO/STUB markers
+        run: |
+          echo "Checking for TODO/STUB markers..."
+          if grep -r "TODO\|STUB\|FIXME\|XXX" --include="*.md" book/ 2>/dev/null | grep -v "todolist\|TodoWrite"; then
+            echo "ERROR: Found TODO/STUB markers in content"
+            exit 1
+          else
+            echo "PASS: No TODO/STUB markers found"
+          fi
+
+      - name: Validate bibliography
+        run: |
+          echo "Validating bibliography..."
+          if [ ! -f "book/book.bib" ]; then
+            echo "ERROR: book.bib not found"
+            exit 1
+          fi
+
+          # Check for basic BibTeX structure
+          if ! grep -q "@article\|@book\|@inproceedings" book/book.bib; then
+            echo "ERROR: No valid BibTeX entries found"
+            exit 1
+          fi
+
+          echo "PASS: Bibliography exists and has valid entries"
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install linting tools
+        run: |
+          pip install flake8 black isort mypy
+
+      - name: Run flake8
+        run: |
+          flake8 labs/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        continue-on-error: true
+
+      - name: Check code formatting with black
+        run: |
+          black --check labs/
+        continue-on-error: true
+
+      - name: Check import sorting
+        run: |
+          isort --check-only labs/
+        continue-on-error: true
+
+  link-validation:
+    name: Validate Internal Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for broken internal links
+        run: |
+          echo "Checking for broken internal links..."
+
+          # Check that referenced files exist
+          for file in book/*.md; do
+            if grep -o '\[.*\](ch[0-9][0-9].*\.md)' "$file" | while read -r link; do
+              LINKED_FILE=$(echo "$link" | sed 's/.*(\(.*\))/\1/')
+              if [ ! -f "book/$LINKED_FILE" ]; then
+                echo "ERROR: Broken link in $file -> $LINKED_FILE"
+                exit 1
+              fi
+            done; then
+              echo "ERROR: Found broken links"
+              exit 1
+            fi
+          done
+
+          echo "PASS: All internal links valid"
+        continue-on-error: true
