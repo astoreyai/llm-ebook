@@ -216,10 +216,11 @@
     "labs_with_readme": 4
   },
   "build_status": {
-    "pdf": "not_tested",
-    "epub": "not_tested",
-    "web": "not_tested",
-    "labs": "not_tested"
+    "pdf": "pending_dependencies",
+    "epub": "pending_dependencies",
+    "web": "pending_dependencies",
+    "labs": "not_tested",
+    "consolidated_md": "complete"
   },
   "dependencies": {
     "python_version": "3.8+",
