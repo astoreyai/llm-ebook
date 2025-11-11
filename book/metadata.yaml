@@ -1,0 +1,66 @@
+---
+title: "Best Current Practices in Prompt & Context Engineering"
+subtitle: "Agentic Systems, Affective Prompting, and MCP/Hooks/Skills Across ChatGPT, Claude, and Self-Hosted Stacks"
+author:
+  - "AI Engineering Research Team"
+date: "2025"
+lang: en-US
+papersize: letter
+geometry: margin=1in
+fontsize: 11pt
+documentclass: book
+classoption:
+  - openany
+  - oneside
+colorlinks: true
+linkcolor: blue
+urlcolor: blue
+citecolor: blue
+toccolor: black
+toc: true
+toc-depth: 3
+numbersections: true
+secnumdepth: 3
+lof: true
+lot: true
+bibliography: book/book.bib
+biblio-style: ieee
+csl: ieee.csl
+link-citations: true
+abstract: |
+  This book provides a comprehensive, rigorous treatment of prompt engineering,
+  context engineering, and agentic system design across multiple LLM platforms.
+  Targeting AI engineers, researchers, ML product teams, and SRE/Platform engineers,
+  it covers best practices for self-hosted models (vLLM, llama.cpp, Ollama),
+  ChatGPT (Custom GPTs and Actions), and Claude (Skills, MCP, Hooks).
+
+  Each chapter follows a structured approach: Problem → Theory → Pattern →
+  Implementation → Evaluation → Pitfalls → Checklist. All code examples are
+  end-to-end runnable with reproducible environments, security considerations
+  (OWASP LLM Top 10), and comprehensive evaluation rubrics.
+
+  The book includes:
+  - Empirical evidence for reasoning prompts (CoT, Self-Consistency, ToT, Reflexion)
+  - Advanced RAG techniques (HyDE, RAPTOR, Self-RAG)
+  - Affective and persona prompting with ethical considerations
+  - Platform-specific integration patterns
+  - Security, observability, and production deployment practices
+  - Runnable labs, templates, and evaluation harnesses
+keywords:
+  - Prompt Engineering
+  - Context Engineering
+  - Large Language Models
+  - Agentic AI
+  - RAG
+  - Chain-of-Thought
+  - Affective Prompting
+  - ChatGPT
+  - Claude
+  - Self-Hosted LLMs
+  - OWASP LLM Security
+  - MCP
+  - Claude Hooks
+  - Custom GPTs
+version: "1.0.0"
+license: "CC BY-NC-SA 4.0"
+---

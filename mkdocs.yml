@@ -1,0 +1,156 @@
+# MkDocs configuration for LLM Prompt Engineering Book
+# Web version of the book
+
+site_name: "Best Current Practices in Prompt & Context Engineering"
+site_description: "Agentic Systems, Affective Prompting, and MCP/Hooks/Skills Across ChatGPT, Claude, and Self-Hosted Stacks"
+site_author: "AI Engineering Team"
+site_url: "https://example.com"  # Update with actual URL
+
+# Repository
+repo_name: "llm-ebook"
+repo_url: "https://github.com/yourusername/llm-ebook"  # Update
+edit_uri: "edit/main/book/"
+
+# Copyright
+copyright: "Copyright &copy; 2025 - Licensed under CC BY-NC-SA 4.0"
+
+# Theme configuration
+theme:
+  name: material
+  language: en
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extra JavaScript
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Extra CSS
+extra_css:
+  - stylesheets/extra.css
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - "Part I: Foundations":
+      - "1. Foundations of Prompt & Context Engineering": ch01-foundations.md
+      - "2. Affective Prompting & Persona Conditioning": ch02-affective-prompting.md
+      - "3. Context Engineering for Long Inputs & RAG": ch03-context-engineering.md
+  - "Part II: Platform-Specific Patterns":
+      - "4. Self-Hosted Models": ch04-self-hosted.md
+      - "5. ChatGPT Custom GPTs & Actions": ch05-chatgpt.md
+      - "6. Claude Skills, MCP & Hooks": ch06-claude.md
+  - "Part III: Advanced Topics":
+      - "7. Agentic Systems & Orchestration": ch07-agentic-systems.md
+      - "8. Security & OWASP LLM Top 10": ch08-security.md
+      - "9. Observability & Evaluation": ch09-observability.md
+      - "10. Production Best Practices": ch10-production.md
+  - "Resources":
+      - "Labs & Examples": labs/index.md
+      - "Templates": templates/index.md
+      - "References": references.md
+      - "Glossary": glossary.md
+
+# Extra configuration
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/llm-ebook
+  analytics:
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve by
+            <a href="https://github.com/yourusername/llm-ebook/issues" target="_blank" rel="noopener">opening an issue</a>.

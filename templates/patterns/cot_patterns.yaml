@@ -1,0 +1,203 @@
+# Chain-of-Thought Prompt Patterns
+# Collection of empirically validated CoT prompting templates
+
+patterns:
+  - name: "zero_shot_cot"
+    description: "Simplest CoT pattern - append reasoning instruction"
+    intent: "Elicit step-by-step reasoning without examples"
+    template: |
+      {question}
+
+      Let's think step by step.
+    when_to_use:
+      - "Multi-step reasoning problems"
+      - "Math and logic tasks"
+      - "When few-shot examples unavailable"
+    failure_modes:
+      - "Simple tasks (adds unnecessary overhead)"
+      - "Factual recall (no reasoning needed)"
+    metrics:
+      - accuracy
+      - token_cost
+    benchmarks:
+      - GSM8K
+      - MATH
+      - StrategyQA
+
+  - name: "few_shot_cot"
+    description: "Provide reasoning examples before query"
+    intent: "Guide reasoning style through examples"
+    template: |
+      Q: Janet's ducks lay 16 eggs per day. She eats three for breakfast
+         and bakes muffins with four. She sells the remainder for $2 per egg.
+         How much does she make daily?
+      A: Let's think step by step.
+         - Total eggs: 16
+         - Eggs eaten: 3
+         - Eggs for muffins: 4
+         - Eggs sold: 16 - 3 - 4 = 9
+         - Daily income: 9 × $2 = $18
+
+      Q: {question}
+      A: Let's think step by step.
+    when_to_use:
+      - "Complex reasoning requiring specific approach"
+      - "When baseline CoT performance inadequate"
+      - "Domain-specific reasoning patterns"
+    failure_modes:
+      - "High token cost (examples in every prompt)"
+      - "Example selection bias"
+    metrics:
+      - accuracy
+      - reasoning_quality
+      - cost_per_query
+
+  - name: "manual_cot"
+    description: "Hand-crafted reasoning chains for demonstration"
+    intent: "Maximum control over reasoning process"
+    template: |
+      # Examples with carefully designed reasoning
+      # (manually crafted for optimal demonstration)
+      {manual_examples}
+
+      Q: {question}
+      A: Let's solve this step by step:
+    when_to_use:
+      - "Critical applications requiring verified reasoning"
+      - "Educational contexts"
+      - "When automatic CoT produces errors"
+    effort: "high"
+    quality: "highest"
+
+  - name: "structured_cot"
+    description: "CoT with explicit structure/headings"
+    intent: "Improve reasoning organization and clarity"
+    template: |
+      {question}
+
+      Let's solve this systematically:
+
+      ## Given Information:
+      [List what we know]
+
+      ## Required:
+      [What we need to find]
+
+      ## Step-by-Step Solution:
+      [Numbered steps]
+
+      ## Final Answer:
+      [Concise result]
+    when_to_use:
+      - "Complex multi-part problems"
+      - "When reasoning needs to be auditable"
+      - "Educational contexts"
+    benefits:
+      - "Improved organization"
+      - "Easier to verify"
+      - "Better for humans to review"
+
+  - name: "cot_with_verification"
+    description: "CoT + self-verification step"
+    intent: "Reduce errors through double-checking"
+    template: |
+      {question}
+
+      Let's think step by step and then verify:
+
+      ## Solution:
+      [Step-by-step reasoning]
+
+      ## Verification:
+      Let me check if this makes sense:
+      [Review key steps]
+      [Check answer reasonableness]
+
+      ## Final Answer:
+      [Confirmed result]
+    when_to_use:
+      - "High-stakes decisions"
+      - "Math problems prone to calculation errors"
+      - "When accuracy > cost"
+    tradeoffs:
+      cost: "2x tokens compared to basic CoT"
+      accuracy: "+3-5% on GSM8K"
+
+  - name: "decomposition_cot"
+    description: "Break problem into sub-problems"
+    intent: "Handle complex problems via decomposition"
+    template: |
+      {question}
+
+      Let's break this into smaller parts:
+
+      ## Sub-problems:
+      1. [First sub-problem]
+      2. [Second sub-problem]
+      ...
+
+      ## Solving each part:
+      ### Part 1:
+      [Solution]
+
+      ### Part 2:
+      [Solution]
+
+      ## Combining results:
+      [Final answer from sub-solutions]
+    when_to_use:
+      - "Very complex problems"
+      - "Problems with clear sub-structure"
+      - "Multi-hop reasoning"
+    benchmarks:
+      - HotpotQA
+      - StrategyQA
+
+best_practices:
+  selection:
+    - "Start with zero-shot CoT for simplicity"
+    - "Add few-shot examples if zero-shot insufficient"
+    - "Use structured CoT for complex/auditable tasks"
+    - "Add verification for high-stakes decisions"
+
+  optimization:
+    - "A/B test different CoT formulations"
+    - "Measure cost-accuracy tradeoffs"
+    - "Monitor for reasoning errors in production"
+    - "Update examples based on failure analysis"
+
+  pitfalls:
+    - "Don't use CoT for simple factual queries"
+    - "Don't assume more examples = better"
+    - "Watch for prompt injection in CoT steps"
+    - "Monitor verbosity (can be 3-5x baseline)"
+
+security_notes:
+  - "CoT reasoning can expose system instructions"
+  - "Adversaries can inject misleading steps"
+  - "Validate final answer, not just reasoning"
+  - "Consider hiding intermediate steps from users"
+
+evaluation:
+  metrics:
+    - "accuracy: Correctness of final answer"
+    - "reasoning_quality: Validity of intermediate steps"
+    - "faithfulness: Are steps actually used?"
+    - "cost: Token usage vs baseline"
+    - "latency: Generation time"
+
+  recommended_benchmarks:
+    reasoning:
+      - GSM8K
+      - MATH
+      - StrategyQA
+      - AQuA
+    multi_hop:
+      - HotpotQA
+      - 2WikiMultihopQA
+    code:
+      - HumanEval (with reasoning)
+      - MBPP
+
+version: "1.0"
+last_updated: "2025-01-10"
