@@ -768,14 +768,14 @@ with client.messages.stream(
 
 | Requirement | Choose Claude | Choose ChatGPT |
 |-------------|---------------|----------------|
-| **Open protocol needed** | ✓ (MCP is open) | ✗ (Actions proprietary) |
-| **Full execution control** | ✓ (client-side) | ✗ (server-side) |
-| **Long context (>128K)** | ✓ (200K) | ✗ (128K max) |
-| **No-code deployment** | ✗ (requires dev) | ✓ (GPT Builder GUI) |
-| **Non-technical users** | ✗ | ✓ (GPT Store) |
-| **Deterministic tool execution** | ✓ | ○ (less predictable) |
-| **Built-in auth/OAuth** | ✗ (DIY) | ✓ (platform handles) |
-| **Streaming tool use** | ✓ | ✗ (limited) |
+| **Open protocol needed** | Yes (MCP is open) | No (Actions proprietary) |
+| **Full execution control** | Yes (client-side) | No (server-side) |
+| **Long context (>128K)** | Yes (200K) | No (128K max) |
+| **No-code deployment** | No (requires dev) | Yes (GPT Builder GUI) |
+| **Non-technical users** | No | Yes (GPT Store) |
+| **Deterministic tool execution** | Yes | Neutral (less predictable) |
+| **Built-in auth/OAuth** | No (DIY) | Yes (platform handles) |
+| **Streaming tool use** | Yes | No (limited) |
 
 **Hybrid approach**:
 

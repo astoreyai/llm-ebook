@@ -51,7 +51,7 @@ Tested information retrieval across context positions (0-32K tokens):
 | Information Position | Recall Accuracy |
 |---------------------|-----------------|
 | Beginning (0-10%) | 92% |
-| Middle (40-60%) | 62% ❌ |
+| Middle (40-60%) | 62% [NO] |
 | End (90-100%) | 88% |
 
 **Key Finding**: ~30% accuracy drop for information in the middle of long contexts.
@@ -107,16 +107,16 @@ User Query → Retriever → Top-K Docs → LLM + Query → Generated Answer
 ```
 
 **Benefits:**
-- ✅ Reduces hallucinations via grounding
-- ✅ Enables knowledge updates without retraining
-- ✅ Provides attribution and citations
-- ✅ Handles proprietary/private data
+- [YES] Reduces hallucinations via grounding
+- [YES] Enables knowledge updates without retraining
+- [YES] Provides attribution and citations
+- [YES] Handles proprietary/private data
 
 **Challenges:**
-- ❌ Retrieval errors compound into generation errors
-- ❌ Irrelevant context degrades output quality
-- ❌ Latency: retrieval + generation overhead
-- ❌ Cost: embedding + LLM inference
+- [NO] Retrieval errors compound into generation errors
+- [NO] Irrelevant context degrades output quality
+- [NO] Latency: retrieval + generation overhead
+- [NO] Cost: embedding + LLM inference
 
 ### 3.2.2 Basic RAG Pipeline
 
@@ -354,14 +354,14 @@ Gao et al. (2022) [3] demonstrated HyDE improvements:
 | SciFact | 65.1% | 70.9% | +5.8pp |
 
 **When HyDE Helps Most:**
-- ✅ Technical/scientific queries
-- ✅ Domain-specific terminology
-- ✅ Complex multi-concept questions
+- [YES] Technical/scientific queries
+- [YES] Domain-specific terminology
+- [YES] Complex multi-concept questions
 
 **When HyDE Hurts:**
-- ❌ Simple factual queries (adds overhead)
-- ❌ Hallucinated hypotheses mislead retrieval
-- ❌ Real-time applications (2× LLM calls)
+- [NO] Simple factual queries (adds overhead)
+- [NO] Hallucinated hypotheses mislead retrieval
+- [NO] Real-time applications (2× LLM calls)
 
 ## 3.4 Advanced RAG: RAPTOR
 
@@ -515,9 +515,9 @@ Sarthi et al. (2024) [4] demonstrated RAPTOR improvements on multi-hop reasoning
 | NarrativeQA | 23.5% | 28.2% | +4.7pp |
 
 **When RAPTOR Helps:**
-- ✅ Long documents (>10K tokens)
-- ✅ Multi-level concepts (technical docs, books)
-- ✅ Questions requiring high-level understanding
+- [YES] Long documents (>10K tokens)
+- [YES] Multi-level concepts (technical docs, books)
+- [YES] Questions requiring high-level understanding
 
 **Trade-offs:**
 - **Indexing Time**: Significantly higher (clustering + summarization)
@@ -673,9 +673,9 @@ Asai et al. (2023) [5] demonstrated Self-RAG improvements:
 | Bio-ASQ | 65.3% | 72.7% | +7.4pp |
 
 **Benefits:**
-- ✅ Selective retrieval (reduces unnecessary calls)
-- ✅ Relevance filtering (higher quality context)
-- ✅ Grounding verification (fewer hallucinations)
+- [YES] Selective retrieval (reduces unnecessary calls)
+- [YES] Relevance filtering (higher quality context)
+- [YES] Grounding verification (fewer hallucinations)
 
 **Costs:**
 - Additional LLM calls for reflection tokens

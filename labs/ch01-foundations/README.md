@@ -62,7 +62,7 @@ Step 1: 8 - 4 = 4
 Step 2: 4 * 6 = 24
 Step 3: Final result: 24
 
-Verification: ✓ Valid
+Verification: Yes Valid
 ```
 
 ### 3. Reflexion Self-Critique (`reflexion_example.py`)

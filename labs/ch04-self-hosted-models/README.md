@@ -71,10 +71,10 @@ Total Time: 5.40 seconds
 
 Performance Assessment:
 ----------------------------------------------------------------------
-✓ Throughput: GOOD (18.5 req/s)
+Yes Throughput: GOOD (18.5 req/s)
   Target: 18 req/s for 7B on A100
 
-✓ Latency: GOOD (p99: 85.1 ms)
+Yes Latency: GOOD (p99: 85.1 ms)
   Target: <85 ms for 7B on A100
 
 ======================================================================
@@ -168,19 +168,19 @@ Q2_K       2.0    3.1        75.0         88.00%     88.00%
 Recommendations:
 ----------------------------------------------------------------------
 
-✓ RECOMMENDED: Q5_K_M
+Yes RECOMMENDED: Q5_K_M
   - Memory: 5.2 GB (63% reduction vs F16)
   - Speed: 50.0 tok/s (2× faster)
   - Quality: 98.8% (only 1.2pp loss)
   - Best balance of size, speed, and quality
 
-○ ALTERNATIVE: Q4_K_M (if memory-constrained)
+Neutral ALTERNATIVE: Q4_K_M (if memory-constrained)
   - Memory: 4.4 GB (69% reduction)
   - Speed: 62.5 tok/s (2.5× faster)
   - Quality: 97.5% (2.5pp loss)
   - Use when: <8GB VRAM available
 
-✗ NOT RECOMMENDED: Q2_K
+No NOT RECOMMENDED: Q2_K
   - Quality: 88.0% (12pp loss - too high)
   - Only use for: Experimentation or extreme constraints
 
@@ -322,7 +322,7 @@ ROI (36 months): 543.2%
 Recommendation
 ----------------------------------------------------------------------
 
-✓ STRONGLY RECOMMEND self-hosting
+Yes STRONGLY RECOMMEND self-hosting
   Break-even in <1 year (1.3 months)
   ROI: 260.5% in 12 months
 
@@ -348,10 +348,10 @@ Multi-Scenario Comparison
 
 Tokens/Month    API Cost     Self-Hosted     Break-Even   Recommend
 =============== ============ =============== ============ ===============
-0.5B            $1,000       $5,928          Never        ✗ No
-1.0B            $2,000       $5,928          5mo          ○ Maybe
-5.0B            $10,000      $5,928          1mo          ✓ Yes
-10.0B           $20,000      $8,928          2mo          ✓ Yes
+0.5B            $1,000       $5,928          Never        No No
+1.0B            $2,000       $5,928          5mo          Neutral Maybe
+5.0B            $10,000      $5,928          1mo          Yes Yes
+10.0B           $20,000      $8,928          2mo          Yes Yes
 
 ======================================================================
 ```
@@ -421,28 +421,28 @@ Use this matrix to choose the right self-hosting approach:
 
 ### When to use vLLM:
 
-- ✓ Production deployment with datacenter GPUs
-- ✓ High throughput required (>100 req/min)
-- ✓ Multiple concurrent users (>50)
-- ✓ Long context sequences (>2K tokens)
-- ✗ No GPU available (use llama.cpp instead)
+- Yes Production deployment with datacenter GPUs
+- Yes High throughput required (>100 req/min)
+- Yes Multiple concurrent users (>50)
+- Yes Long context sequences (>2K tokens)
+- No No GPU available (use llama.cpp instead)
 
 ### When to use llama.cpp:
 
-- ✓ Consumer hardware (laptops, workstations)
-- ✓ CPU-only inference
-- ✓ Apple Silicon (M1/M2/M3)
-- ✓ Edge deployment
-- ✓ Development/testing
-- ✗ High-throughput production (use vLLM instead)
+- Yes Consumer hardware (laptops, workstations)
+- Yes CPU-only inference
+- Yes Apple Silicon (M1/M2/M3)
+- Yes Edge deployment
+- Yes Development/testing
+- No High-throughput production (use vLLM instead)
 
 ### When to use Ollama:
 
-- ✓ Quick prototyping
-- ✓ Local development
-- ✓ Non-technical users
-- ✓ Model experimentation
-- ✗ Production serving (use vLLM or llama.cpp)
+- Yes Quick prototyping
+- Yes Local development
+- Yes Non-technical users
+- Yes Model experimentation
+- No Production serving (use vLLM or llama.cpp)
 
 ## TCO Decision Tree
 

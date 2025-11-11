@@ -587,16 +587,16 @@ Choosing the right self-hosting platform depends on requirements:
 
 | Requirement | vLLM | llama.cpp | Ollama | LM Studio |
 |-------------|------|-----------|--------|-----------|
-| **Production serving** | ✓ Best | ○ Possible | ✗ No | ✗ No |
-| **High throughput (>100 req/min)** | ✓ | ✗ | ✗ | ✗ |
-| **Consumer hardware (CPU)** | ✗ | ✓ Best | ✓ | ✓ |
-| **Apple Silicon** | ✗ | ✓ Best | ✓ | ✓ |
-| **Quick prototyping** | ○ | ○ | ✓ Best | ✓ Best |
-| **OpenAI API compatibility** | ✓ | ✓ | ✓ | ✓ |
-| **Multi-GPU scaling** | ✓ Best | ○ | ✗ | ✗ |
-| **Low latency (<100ms p99)** | ✓ | ✗ | ✗ | ✗ |
-| **No GUI required** | ✓ | ✓ | ✓ | ✗ |
-| **Non-technical users** | ✗ | ✗ | ○ | ✓ Best |
+| **Production serving** | Yes Best | Neutral Possible | No No | No No |
+| **High throughput (>100 req/min)** | Yes | No | No | No |
+| **Consumer hardware (CPU)** | No | Yes Best | Yes | Yes |
+| **Apple Silicon** | No | Yes Best | Yes | Yes |
+| **Quick prototyping** | Neutral | Neutral | Yes Best | Yes Best |
+| **OpenAI API compatibility** | Yes | Yes | Yes | Yes |
+| **Multi-GPU scaling** | Yes Best | Neutral | No | No |
+| **Low latency (<100ms p99)** | Yes | No | No | No |
+| **No GUI required** | Yes | Yes | Yes | No |
+| **Non-technical users** | No | No | Neutral | Yes Best |
 
 **Decision flowchart**:
 

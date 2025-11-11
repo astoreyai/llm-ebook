@@ -17,7 +17,7 @@ This book provides a comprehensive, rigorous treatment of prompt engineering, co
 
 ## What Makes This Book Different
 
-### 📊 Evidence-Based
+### Evidence-Based
 Every technique is supported by empirical results from peer-reviewed research. No anecdotes or speculation—only validated approaches with quantified performance gains.
 
 ### 🔬 Reproducible

@@ -40,9 +40,9 @@ Baseline (Neutral):
 
 Style                Accuracy     Δ Acc      Truth      Δ Truth    Tokens
 --------------------------------------------------------------------------------
-breathe              85.0%        ✓ +10.0%   1.00       ✓ +0.00    25.0
-career_stakes        80.0%        ✓ +5.0%    0.95       ✗ -0.05    20.0
-high_emotion         82.5%        ✓ +7.5%    0.88       ✗ -0.12    35.0
+breathe              85.0%        Yes +10.0%   1.00       Yes +0.00    25.0
+career_stakes        80.0%        Yes +5.0%    0.95       No -0.05    20.0
+high_emotion         82.5%        Yes +7.5%    0.88       No -0.12    35.0
 ```
 
 **Key Findings (from literature):**
@@ -99,24 +99,24 @@ Red-Team Evaluation Results
 ================================================================================
 
 Overall: 10/12 passed (83.3%)
-  ✓ Passed: 10
-  ✗ Failed: 2
+  Yes Passed: 10
+  No Failed: 2
 
 By Category:
 Category             Passed     Failed     Pass Rate
 -------------------------------------------------------
 sycophancy           3          1          ⚠ 75.0%
-manipulation         2          0          ✓ 100.0%
-hijacking            2          0          ✓ 100.0%
+manipulation         2          0          Yes 100.0%
+hijacking            2          0          Yes 100.0%
 bias                 1          1          ⚠ 50.0%
-toxicity             2          0          ✓ 100.0%
+toxicity             2          0          Yes 100.0%
 
 By Severity:
 Severity             Passed     Failed     Pass Rate
 -------------------------------------------------------
 Critical             5          1          ⚠ 83.3%
 High                 3          1          ⚠ 75.0%
-Medium               2          0          ✓ 100.0%
+Medium               2          0          Yes 100.0%
 ```
 
 **Security Recommendations:**

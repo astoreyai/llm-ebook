@@ -3,7 +3,7 @@
 **Agentic Systems, Affective Prompting, and MCP/Hooks/Skills Across ChatGPT, Claude, and Self-Hosted Stacks**
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/yourusername/llm-ebook)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/astoreyai/llm-ebook)
 
 ## Overview
 
@@ -15,12 +15,12 @@ This book provides a rigorous, citation-driven treatment of prompt engineering, 
 
 ## Key Features
 
-✅ **PhD-Level Technical Writing**: Rigorous, evidence-based content with IEEE-style citations
-✅ **Reproducible Examples**: End-to-end runnable labs with pinned dependencies
-✅ **Security-First**: Integrated OWASP LLM Top 10 mitigations throughout
-✅ **Platform-Agnostic Patterns**: Abstract principles that apply across implementations
-✅ **Comprehensive Coverage**: From foundations to production deployment
-✅ **Multiple Formats**: PDF, EPUB, and searchable web version
+- **PhD-Level Technical Writing**: Rigorous, evidence-based content with IEEE-style citations
+- **Reproducible Examples**: End-to-end runnable labs with pinned dependencies
+- **Security-First**: Integrated OWASP LLM Top 10 mitigations throughout
+- **Platform-Agnostic Patterns**: Abstract principles that apply across implementations
+- **Comprehensive Coverage**: From foundations to production deployment
+- **Multiple Formats**: PDF, EPUB, and searchable web version
 
 ## Target Audience
 
@@ -73,7 +73,7 @@ This book provides a rigorous, citation-driven treatment of prompt engineering, 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/llm-ebook.git
+git clone https://github.com/astoreyai/llm-ebook.git
 cd llm-ebook
 
 # Install dependencies
@@ -271,15 +271,14 @@ If you use this work in your research or projects, please cite:
   author={AI Engineering Research Team},
   year={2025},
   publisher={Self-published},
-  url={https://github.com/yourusername/llm-ebook}
+  url={https://github.com/astoreyai/llm-ebook}
 }
 ```
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/llm-ebook/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/llm-ebook/discussions)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/astoreyai/llm-ebook/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/astoreyai/llm-ebook/discussions)
 
 ## Acknowledgments
 

@@ -318,13 +318,13 @@ Yao et al. [6] demonstrated improvements on creative and search tasks:
 
 **When to Use ToT:**
 
-✅ Open-ended problems with multiple valid approaches
-✅ Tasks requiring backtracking (e.g., constraint satisfaction)
-✅ Creative generation with quality filters
+[YES] Open-ended problems with multiple valid approaches
+[YES] Tasks requiring backtracking (e.g., constraint satisfaction)
+[YES] Creative generation with quality filters
 
-❌ Simple factual queries
-❌ Cost-constrained applications
-❌ Real-time latency requirements
+[NO] Simple factual queries
+[NO] Cost-constrained applications
+[NO] Real-time latency requirements
 
 ### 1.2.4 Reflexion: Self-Reflective Iteration
 
@@ -637,12 +637,12 @@ Is the task simple factual recall?
 
 ### 1.4.3 Anti-Patterns to Avoid
 
-❌ **Premature Optimization**: Adding complexity without measurement
-❌ **Anecdotal Evidence**: Trusting single examples over systematic evaluation
-❌ **Overfitting**: Optimizing too heavily for specific test cases
-❌ **Ignoring Cost**: Deploying expensive techniques without ROI analysis
-❌ **Version Neglect**: Failing to track prompt versions and changes
-❌ **Security Blindness**: Not testing for prompt injection and adversarial inputs
+[NO] **Premature Optimization**: Adding complexity without measurement
+[NO] **Anecdotal Evidence**: Trusting single examples over systematic evaluation
+[NO] **Overfitting**: Optimizing too heavily for specific test cases
+[NO] **Ignoring Cost**: Deploying expensive techniques without ROI analysis
+[NO] **Version Neglect**: Failing to track prompt versions and changes
+[NO] **Security Blindness**: Not testing for prompt injection and adversarial inputs
 
 ## 1.5 Summary and Key Takeaways
 

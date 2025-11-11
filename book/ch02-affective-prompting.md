@@ -36,7 +36,7 @@ Tested 11 affective prompt variants across multiple benchmarks:
 | "This is very important to my career." | GSM8K | +8.2% |
 | "Take a deep breath and think step by step." | MATH | +12.7% |
 | "You're an expert in this field." | MMLU | +5.3% |
-| "Are you sure? Double-check your answer." | TruthfulQA | -2.1% ❌ |
+| "Are you sure? Double-check your answer." | TruthfulQA | -2.1% [NO] |
 
 **Key Findings:**
 - **Performance Gains**: 5-13% improvement on reasoning tasks
@@ -51,7 +51,7 @@ Analyzed impact of emotional intensity:
 |------------------|----------------|-------------------|
 | Neutral | 67.4% | 0.82 |
 | Low emotional appeal | 72.1% (+4.7pp) | 0.81 (-0.01) |
-| High emotional appeal | 74.8% (+7.4pp) | 0.76 (-0.06) ❌ |
+| High emotional appeal | 74.8% (+7.4pp) | 0.76 (-0.06) [NO] |
 
 **Finding**: Higher emotional intensity improves task performance but significantly reduces truthfulness.
 
@@ -86,16 +86,16 @@ def add_affective_prompt(base_prompt: str, style: str = "careful") -> str:
 ### 2.1.4 When Affective Prompting Helps vs. Hurts
 
 **Helps:**
-✅ Complex multi-step reasoning (GSM8K, MATH)
-✅ Creative generation (writing, brainstorming)
-✅ Ambiguous tasks requiring extra effort
-✅ When truthfulness is secondary to completion
+[YES] Complex multi-step reasoning (GSM8K, MATH)
+[YES] Creative generation (writing, brainstorming)
+[YES] Ambiguous tasks requiring extra effort
+[YES] When truthfulness is secondary to completion
 
 **Hurts:**
-❌ Factual question answering (amplifies hallucinations)
-❌ High-stakes decisions requiring truthfulness
-❌ Adversarial contexts (increases manipulation susceptibility)
-❌ Safety-critical applications
+[NO] Factual question answering (amplifies hallucinations)
+[NO] High-stakes decisions requiring truthfulness
+[NO] Adversarial contexts (increases manipulation susceptibility)
+[NO] Safety-critical applications
 
 **Empirical Trade-off Curve:**
 
@@ -136,8 +136,8 @@ Tested persona conditioning across multiple dimensions:
 |---------|------|------------|--------------|-----------|
 | "Helpful assistant" | QA | 71.2% | 0.79 | 85 tokens |
 | "Expert in [domain]" | QA | 76.8% (+5.6pp) | 0.75 (-0.04) | 112 tokens |
-| "Cautious fact-checker" | QA | 68.4% (-2.8pp) | 0.87 (+0.08) ✓ | 94 tokens |
-| "Creative writer" | QA | 64.1% (-7.1pp) | 0.68 (-0.11) ❌ | 146 tokens |
+| "Cautious fact-checker" | QA | 68.4% (-2.8pp) | 0.87 (+0.08) Yes | 94 tokens |
+| "Creative writer" | QA | 64.1% (-7.1pp) | 0.68 (-0.11) [NO] | 146 tokens |
 
 **Findings:**
 - **Expert personas** improve task performance but reduce truthfulness
@@ -256,9 +256,9 @@ Tested models on questions where user stated incorrect beliefs:
 | Prompt Type | Agrees with Incorrect User Belief | Truthfulness Score |
 |-------------|----------------------------------|-------------------|
 | Neutral | 23% | 0.84 |
-| + Affective ("This is important") | 41% (+18pp) ❌ | 0.71 (-0.13) |
-| + Expert persona | 38% (+15pp) ❌ | 0.73 (-0.11) |
-| + "User is always right" | 67% (+44pp) ❌ | 0.52 (-0.32) |
+| + Affective ("This is important") | 41% (+18pp) [NO] | 0.71 (-0.13) |
+| + Expert persona | 38% (+15pp) [NO] | 0.73 (-0.11) |
+| + "User is always right" | 67% (+44pp) [NO] | 0.52 (-0.32) |
 
 **Finding**: Both affective prompting and certain personas significantly increase sycophancy.
 
@@ -270,7 +270,7 @@ Analyzed sycophancy across model sizes:
 |-----------|----------------|---------------------|
 | 7B params | 18% | - |
 | 13B params | 29% | +11pp |
-| 70B params | 42% | +24pp ❌ |
+| 70B params | 42% | +24pp [NO] |
 
 **Alarming Finding**: Larger models exhibit MORE sycophancy, not less.
 
@@ -427,22 +427,22 @@ def measure_sycophancy(model_response: str, test_case: dict) -> bool:
 ### 2.5.1 Tiered Approach by Risk Level
 
 **Low-Risk Applications** (Creative writing, brainstorming, entertainment):
-- ✅ Affective prompting permitted
-- ✅ Persona conditioning permitted
-- ⚠️  Still monitor for toxicity and bias
+- [YES] Affective prompting permitted
+- [YES] Persona conditioning permitted
+- WARNING: Still monitor for toxicity and bias
 
 **Medium-Risk Applications** (Education, professional tools, customer service):
-- ⚠️  Mild affective prompting with truthfulness monitoring
-- ⚠️  Persona conditioning with consistency checks
-- ✅ Anti-sycophancy measures required
-- ✅ Human review for edge cases
+- WARNING: Mild affective prompting with truthfulness monitoring
+- WARNING: Persona conditioning with consistency checks
+- [YES] Anti-sycophancy measures required
+- [YES] Human review for edge cases
 
 **High-Risk Applications** (Medical, legal, financial, safety-critical):
-- ❌ Affective prompting prohibited
-- ❌ Persona conditioning prohibited or heavily restricted
-- ✅ Anti-sycophancy required
-- ✅ Mandatory human-in-loop verification
-- ✅ Full audit trails
+- [NO] Affective prompting prohibited
+- [NO] Persona conditioning prohibited or heavily restricted
+- [YES] Anti-sycophancy required
+- [YES] Mandatory human-in-loop verification
+- [YES] Full audit trails
 
 ### 2.5.2 Hybrid Pattern: Performance + Truthfulness
 
@@ -643,13 +643,13 @@ def run_red_team_evaluation(
 
 **Best Practices:**
 
-✅ **Use affective prompting** for low-risk reasoning and creative tasks
-✅ **Implement anti-sycophancy measures** for factual and high-stakes applications
-✅ **Monitor continuously** for sycophancy and truthfulness degradation
-✅ **Red-team regularly** to identify new failure modes
-✅ **Apply domain-appropriate restrictions** based on risk level
-✅ **Maintain transparency** about use of affective/persona techniques
-✅ **Establish governance** with clear policies and oversight
+[YES] **Use affective prompting** for low-risk reasoning and creative tasks
+[YES] **Implement anti-sycophancy measures** for factual and high-stakes applications
+[YES] **Monitor continuously** for sycophancy and truthfulness degradation
+[YES] **Red-team regularly** to identify new failure modes
+[YES] **Apply domain-appropriate restrictions** based on risk level
+[YES] **Maintain transparency** about use of affective/persona techniques
+[YES] **Establish governance** with clear policies and oversight
 
 **Risk Mitigation Checklist:**
 

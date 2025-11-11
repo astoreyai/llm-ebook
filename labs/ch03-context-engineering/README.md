@@ -49,7 +49,7 @@ F1                   0.667           1.000           +0.333
 MRR                  1.000           1.000           +0.000
 ============================================================
 
-✓ HyDE improves retrieval quality!
+Yes HyDE improves retrieval quality!
 ```
 
 **Key Findings (from Gao et al. 2022):**
@@ -136,9 +136,9 @@ Flat retrieval (base documents only):
 RAPTOR retrieval (multi-level):
   1. 📑 L2_N0: This cluster discusses advanced LLM serving... (0.845)
   2. 📑 L1_N0: Topics related to PagedAttention... (0.821)
-  3. 📄 L0_N0: PagedAttention divides the KV cache... (0.798)
+  3. L0_N0: PagedAttention divides the KV cache... (0.798)
 
-✓ RAPTOR retrieved 2 high-level summaries
+Yes RAPTOR retrieved 2 high-level summaries
   (Provides broader context and connections)
 ============================================================
 ```
@@ -176,17 +176,17 @@ Self-RAG Query Result
 
 Query: What is PagedAttention?
 
-Should Retrieve: ✓ Yes
+Should Retrieve: Yes Yes
 
 Retrieved Documents: 5
 Relevant Documents: 3
 
 Relevance Filtering:
-  ✓ doc1: 0.892
-  ✗ doc2: 0.543
-  ✓ doc3: 0.821
-  ✗ doc4: 0.412
-  ✓ doc5: 0.765
+  Yes doc1: 0.892
+  No doc2: 0.543
+  Yes doc3: 0.821
+  No doc4: 0.412
+  Yes doc5: 0.765
 
 ────────────────────────────────────────────────────────────
 Answer:
@@ -231,9 +231,9 @@ Self-RAG:
   - Filtered to 3/5 relevant docs
   - Support score: 0.92
   - Confidence: 0.85
-  - ✓ Transparent reasoning with 10 steps
+  - Yes Transparent reasoning with 10 steps
 
-✓ Self-RAG filtered out 2 irrelevant document(s)
+Yes Self-RAG filtered out 2 irrelevant document(s)
   (Reduces noise and potential hallucinations)
 ============================================================
 ```
