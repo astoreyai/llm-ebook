@@ -5,10 +5,10 @@
   "branch": "claude/prompt-engineering-book-011CV2DhrMZWW9vZk5sZ3h1k",
   "phase": "content_development",
   "progress": {
-    "chapters_completed": 4,
+    "chapters_completed": 5,
     "chapters_total": 10,
-    "completion_percentage": 40,
-    "labs_completed": 10,
+    "completion_percentage": 50,
+    "labs_completed": 11,
     "labs_total_estimated": 20
   },
   "checklist": {
@@ -58,6 +58,14 @@
       "status": "complete"
     },
     {
+      "name": "Chapter 5: ChatGPT Custom GPTs & Actions",
+      "path": "/book/ch05-chatgpt-custom-gpts.md",
+      "word_count": 6500,
+      "citations": 4,
+      "labs": 1,
+      "status": "complete"
+    },
+    {
       "name": "Chapter 1 Labs",
       "files": [
         "labs/ch01-foundations/cot_vs_direct.py",
@@ -98,6 +106,14 @@
       "status": "complete"
     },
     {
+      "name": "Chapter 5 Labs",
+      "files": [
+        "labs/ch05-chatgpt-custom-gpts/action_validator.py"
+      ],
+      "total_lines": 680,
+      "status": "complete"
+    },
+    {
       "name": "Lab Documentation",
       "files": [
         "labs/ch01-foundations/README.md",
@@ -115,7 +131,7 @@
     {
       "name": "Bibliography",
       "path": "/book/book.bib",
-      "entries": 48,
+      "entries": 52,
       "status": "complete"
     },
     {
@@ -131,9 +147,8 @@
   ],
   "pending_deliverables": [
     {
-      "name": "Chapters 5-10",
+      "name": "Chapters 6-10",
       "items": [
-        "ch05-chatgpt.md",
         "ch06-claude.md",
         "ch07-agentic-systems.md",
         "ch08-security.md",
@@ -144,7 +159,7 @@
     {
       "name": "Additional Labs",
       "items": [
-        "Chapter 5-10 labs (estimated 10 more labs)"
+        "Chapter 6-10 labs (estimated 9 more labs)"
       ]
     },
     {
@@ -160,11 +175,11 @@
     }
   ],
   "quality_metrics": {
-    "total_words": 25000,
-    "total_citations": 44,
-    "total_labs": 10,
-    "total_lab_lines": 5200,
-    "citation_density": 0.0018,
+    "total_words": 31500,
+    "total_citations": 52,
+    "total_labs": 11,
+    "total_lab_lines": 5880,
+    "citation_density": 0.0017,
     "code_completeness": "100%",
     "reproducibility": "high",
     "labs_with_tests": 1,
@@ -255,6 +270,14 @@
         "key_features": ["Break-even analysis", "ROI projections", "Multi-scenario comparison", "Deployment type comparison"],
         "status": "complete"
       }
+    },
+    "chapter_5": {
+      "action_validator": {
+        "purpose": "Validate OpenAPI schemas for ChatGPT Actions compatibility",
+        "lines": 680,
+        "key_features": ["Schema structure validation", "GPT-specific requirements", "Parameter validation", "Security checks", "Best practices"],
+        "status": "complete"
+      }
     }
   },
   "file_hashes": {
@@ -262,10 +285,10 @@
   },
   "next_steps": [
     "Test build system (make install && make all)",
-    "Begin Chapter 5 (ChatGPT Custom GPTs & Actions)",
     "Begin Chapter 6 (Claude Skills, MCP & Hooks)",
     "Begin Chapter 7 (Agentic Systems & Orchestration)",
-    "Add unit tests for Chapters 2-4 labs",
+    "Begin Chapter 8 (Security & OWASP LLM Top 10)",
+    "Add unit tests for Chapters 2-5 labs",
     "Set up CI/CD pipeline"
   ],
   "curator_script_compliance": {
@@ -282,6 +305,7 @@
     "Each lab includes comprehensive README with usage examples",
     "Ready for production use: just swap mock functions for real APIs",
     "Chapter 4 includes production deployment patterns and TCO analysis",
-    "Total deliverable: 25,000 words, 44 citations, 10 complete labs, 5,200 lines of code"
+    "Chapter 5 includes OpenAPI schema validator for ChatGPT Actions",
+    "Total deliverable: 31,500 words, 52 citations, 11 complete labs, 5,880 lines of code"
   ]
 }
