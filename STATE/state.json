@@ -5,9 +5,9 @@
   "branch": "claude/prompt-engineering-book-011CV2DhrMZWW9vZk5sZ3h1k",
   "phase": "content_development",
   "progress": {
-    "chapters_completed": 8,
+    "chapters_completed": 9,
     "chapters_total": 10,
-    "completion_percentage": 80,
+    "completion_percentage": 90,
     "labs_completed": 11,
     "labs_total_estimated": 20
   },
@@ -86,6 +86,14 @@
       "path": "/book/ch08-security.md",
       "word_count": 5000,
       "citations": 5,
+      "labs": 0,
+      "status": "complete"
+    },
+    {
+      "name": "Chapter 9: Observability & Evaluation",
+      "path": "/book/ch09-observability.md",
+      "word_count": 3700,
+      "citations": 2,
       "labs": 0,
       "status": "complete"
     },
@@ -171,9 +179,8 @@
   ],
   "pending_deliverables": [
     {
-      "name": "Chapters 9-10",
+      "name": "Chapter 10",
       "items": [
-        "ch09-observability.md",
         "ch10-production.md"
       ]
     },
@@ -196,11 +203,11 @@
     }
   ],
   "quality_metrics": {
-    "total_words": 49500,
-    "total_citations": 62,
+    "total_words": 53200,
+    "total_citations": 64,
     "total_labs": 11,
     "total_lab_lines": 5880,
-    "citation_density": 0.0013,
+    "citation_density": 0.0012,
     "code_completeness": "100%",
     "reproducibility": "high",
     "labs_with_tests": 1,
@@ -331,7 +338,8 @@
     "Chapter 6 covers Claude MCP protocol and tool use patterns",
     "Chapter 7 covers agentic systems (ReAct, Reflexion, multi-agent)",
     "Chapter 8 covers complete OWASP LLM Top 10 with code examples",
-    "Total deliverable: 49,500 words, 62 citations, 11 complete labs, 5,880 lines of code",
-    "80% complete - 2 chapters remaining (Observability, Production)"
+    "Chapter 9 covers observability, metrics, evaluation (offline/online/LLM-as-judge)",
+    "Total deliverable: 53,200 words, 64 citations, 11 complete labs, 5,880 lines of code",
+    "90% complete - 1 chapter remaining (Production Best Practices)"
   ]
 }
