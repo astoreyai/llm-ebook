@@ -5,9 +5,9 @@
   "branch": "claude/prompt-engineering-book-011CV2DhrMZWW9vZk5sZ3h1k",
   "phase": "content_development",
   "progress": {
-    "chapters_completed": 7,
+    "chapters_completed": 8,
     "chapters_total": 10,
-    "completion_percentage": 70,
+    "completion_percentage": 80,
     "labs_completed": 11,
     "labs_total_estimated": 20
   },
@@ -78,6 +78,14 @@
       "path": "/book/ch07-agentic-systems.md",
       "word_count": 6500,
       "citations": 6,
+      "labs": 0,
+      "status": "complete"
+    },
+    {
+      "name": "Chapter 8: Security & OWASP LLM Top 10",
+      "path": "/book/ch08-security.md",
+      "word_count": 5000,
+      "citations": 5,
       "labs": 0,
       "status": "complete"
     },
@@ -163,9 +171,8 @@
   ],
   "pending_deliverables": [
     {
-      "name": "Chapters 8-10",
+      "name": "Chapters 9-10",
       "items": [
-        "ch08-security.md",
         "ch09-observability.md",
         "ch10-production.md"
       ]
@@ -189,8 +196,8 @@
     }
   ],
   "quality_metrics": {
-    "total_words": 44500,
-    "total_citations": 59,
+    "total_words": 49500,
+    "total_citations": 62,
     "total_labs": 11,
     "total_lab_lines": 5880,
     "citation_density": 0.0013,
@@ -323,7 +330,8 @@
     "Chapter 5 includes OpenAPI schema validator for ChatGPT Actions",
     "Chapter 6 covers Claude MCP protocol and tool use patterns",
     "Chapter 7 covers agentic systems (ReAct, Reflexion, multi-agent)",
-    "Total deliverable: 44,500 words, 59 citations, 11 complete labs, 5,880 lines of code",
-    "70% complete - 3 chapters remaining (Security, Observability, Production)"
+    "Chapter 8 covers complete OWASP LLM Top 10 with code examples",
+    "Total deliverable: 49,500 words, 62 citations, 11 complete labs, 5,880 lines of code",
+    "80% complete - 2 chapters remaining (Observability, Production)"
   ]
 }
