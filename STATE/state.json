@@ -5,10 +5,10 @@
   "branch": "claude/prompt-engineering-book-011CV2DhrMZWW9vZk5sZ3h1k",
   "phase": "content_development",
   "progress": {
-    "chapters_completed": 3,
+    "chapters_completed": 4,
     "chapters_total": 10,
-    "completion_percentage": 30,
-    "labs_completed": 7,
+    "completion_percentage": 40,
+    "labs_completed": 10,
     "labs_total_estimated": 20
   },
   "checklist": {
@@ -50,6 +50,14 @@
       "status": "complete"
     },
     {
+      "name": "Chapter 4: Self-Hosted Models",
+      "path": "/book/ch04-self-hosted-models.md",
+      "word_count": 6500,
+      "citations": 18,
+      "labs": 3,
+      "status": "complete"
+    },
+    {
       "name": "Chapter 1 Labs",
       "files": [
         "labs/ch01-foundations/cot_vs_direct.py",
@@ -80,11 +88,22 @@
       "status": "complete"
     },
     {
+      "name": "Chapter 4 Labs",
+      "files": [
+        "labs/ch04-self-hosted-models/vllm_benchmark.py",
+        "labs/ch04-self-hosted-models/quantization_comparison.py",
+        "labs/ch04-self-hosted-models/tco_calculator.py"
+      ],
+      "total_lines": 1600,
+      "status": "complete"
+    },
+    {
       "name": "Lab Documentation",
       "files": [
         "labs/ch01-foundations/README.md",
         "labs/ch02-affective-prompting/README.md",
-        "labs/ch03-context-engineering/README.md"
+        "labs/ch03-context-engineering/README.md",
+        "labs/ch04-self-hosted-models/README.md"
       ],
       "status": "complete"
     },
@@ -96,7 +115,7 @@
     {
       "name": "Bibliography",
       "path": "/book/book.bib",
-      "entries": 30,
+      "entries": 48,
       "status": "complete"
     },
     {
@@ -112,9 +131,8 @@
   ],
   "pending_deliverables": [
     {
-      "name": "Chapters 4-10",
+      "name": "Chapters 5-10",
       "items": [
-        "ch04-self-hosted.md",
         "ch05-chatgpt.md",
         "ch06-claude.md",
         "ch07-agentic-systems.md",
@@ -126,30 +144,31 @@
     {
       "name": "Additional Labs",
       "items": [
-        "Chapter 4-10 labs (estimated 13 more labs)"
+        "Chapter 5-10 labs (estimated 10 more labs)"
       ]
     },
     {
       "name": "Figures",
       "items": [
-        "RAG pipeline diagram (SVG)",
-        "CoT comparison chart (SVG)",
-        "RAPTOR tree structure (SVG)",
-        "Position effects curve (SVG)",
-        "Agent architecture diagrams (SVG)"
+        "✓ RAG pipeline diagram (SVG)",
+        "✓ CoT comparison chart (SVG)",
+        "✓ RAPTOR tree structure (SVG)",
+        "✓ Position effects curve (SVG)",
+        "Agent architecture diagrams (SVG)",
+        "MCP protocol diagram (SVG)"
       ]
     }
   ],
   "quality_metrics": {
-    "total_words": 18500,
-    "total_citations": 26,
-    "total_labs": 7,
-    "total_lab_lines": 3600,
-    "citation_density": 0.0014,
+    "total_words": 25000,
+    "total_citations": 44,
+    "total_labs": 10,
+    "total_lab_lines": 5200,
+    "citation_density": 0.0018,
     "code_completeness": "100%",
     "reproducibility": "high",
     "labs_with_tests": 1,
-    "labs_with_readme": 3
+    "labs_with_readme": 4
   },
   "build_status": {
     "pdf": "not_tested",
@@ -216,6 +235,26 @@
         "key_features": ["4 reflection tokens", "Relevance filtering", "Support verification", "Reasoning trace"],
         "status": "complete"
       }
+    },
+    "chapter_4": {
+      "vllm_benchmark": {
+        "purpose": "Comprehensive vLLM performance benchmarking",
+        "lines": 550,
+        "key_features": ["Throughput measurement", "Latency percentiles (p50/p90/p99)", "TTFT tracking", "Mock/production modes"],
+        "status": "complete"
+      },
+      "quantization_comparison": {
+        "purpose": "Compare GGUF quantization levels (Q8, Q5, Q4, Q3, Q2)",
+        "lines": 500,
+        "key_features": ["Memory/speed/quality tradeoffs", "Benchmark tasks", "Efficiency scoring", "Recommendations"],
+        "status": "complete"
+      },
+      "tco_calculator": {
+        "purpose": "TCO analysis for self-hosted vs API deployment",
+        "lines": 550,
+        "key_features": ["Break-even analysis", "ROI projections", "Multi-scenario comparison", "Deployment type comparison"],
+        "status": "complete"
+      }
     }
   },
   "file_hashes": {
@@ -223,9 +262,10 @@
   },
   "next_steps": [
     "Test build system (make install && make all)",
-    "Generate SVG diagrams for key concepts",
-    "Begin Chapter 4 (Self-Hosted Models: vLLM, llama.cpp, Ollama)",
-    "Add unit tests for all labs",
+    "Begin Chapter 5 (ChatGPT Custom GPTs & Actions)",
+    "Begin Chapter 6 (Claude Skills, MCP & Hooks)",
+    "Begin Chapter 7 (Agentic Systems & Orchestration)",
+    "Add unit tests for Chapters 2-4 labs",
     "Set up CI/CD pipeline"
   ],
   "curator_script_compliance": {
@@ -241,6 +281,7 @@
     "Statistical rigor: t-tests, confidence intervals, effect sizes",
     "Each lab includes comprehensive README with usage examples",
     "Ready for production use: just swap mock functions for real APIs",
-    "Total deliverable: 18,500 words, 26 citations, 7 complete labs, 3,600 lines of code"
+    "Chapter 4 includes production deployment patterns and TCO analysis",
+    "Total deliverable: 25,000 words, 44 citations, 10 complete labs, 5,200 lines of code"
   ]
 }

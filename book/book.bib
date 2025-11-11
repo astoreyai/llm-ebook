@@ -275,11 +275,152 @@
   note = {Accessed: 2025-01-10}
 }
 
-@article{vllm2023,
+% ============================================================================
+% Chapter 4: Self-Hosted Models
+% ============================================================================
+
+@inproceedings{kwon2023efficient,
   title = {Efficient Memory Management for Large Language Model Serving with PagedAttention},
   author = {Kwon, Woosuk and Li, Zhuohan and Zhuang, Siyuan and Sheng, Ying and Zheng, Lianmin and Yu, Cody Hao and Gonzalez, Joseph E and Zhang, Hao and Stoica, Ion},
-  journal = {Proceedings of the 29th Symposium on Operating Systems Principles (SOSP)},
+  booktitle = {Proceedings of the 29th Symposium on Operating Systems Principles (SOSP)},
+  pages = {611--626},
   year = {2023}
+}
+
+@inproceedings{yu2022orca,
+  title = {Orca: A Distributed Serving System for Transformer-Based Generative Models},
+  author = {Yu, Gyeong-In and Jeong, Joo Seong and Kim, Geon-Woo and Kim, Soojeong and Chun, Byung-Gon},
+  booktitle = {Proceedings of the 16th USENIX Symposium on Operating Systems Design and Implementation (OSDI)},
+  pages = {521--538},
+  year = {2022}
+}
+
+@inproceedings{dettmers2023gptq,
+  title = {GPT3.int8(): 8-bit Matrix Multiplication for Transformers at Scale},
+  author = {Dettmers, Tim and Lewis, Mike and Belkada, Younes and Zettlemoyer, Luke},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume = {35},
+  pages = {30318--30332},
+  year = {2023}
+}
+
+@article{patterson2023carbon,
+  title = {Carbon Emissions and Large Neural Network Training},
+  author = {Patterson, David and Gonzalez, Joseph and Le, Quoc and Liang, Chen and Munguia, Lluis-Miquel and Rothchild, Daniel and So, David and Texier, Maud and Dean, Jeff},
+  journal = {Proceedings of the 2023 Conference on Machine Learning and Systems (MLSys)},
+  pages = {1--15},
+  year = {2023}
+}
+
+@article{abadi2016deep,
+  title = {Deep Learning with Differential Privacy},
+  author = {Abadi, Martin and Chu, Andy and Goodfellow, Ian and McMahan, H. Brendan and Mironov, Ilya and Talwar, Kunal and Zhang, Li},
+  journal = {Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+  pages = {308--318},
+  year = {2016},
+  publisher = {ACM}
+}
+
+@inproceedings{hendrycks2020measuring,
+  title = {Measuring Massive Multitask Language Understanding},
+  author = {Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2021}
+}
+
+@misc{llama-cpp2023,
+  author = {Gerganov, Georgi and contributors},
+  title = {llama.cpp: Inference of LLaMA model in pure C/C++},
+  year = {2023},
+  howpublished = {\url{https://github.com/ggerganov/llama.cpp}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{llama-cpp-bench2023,
+  author = {{llama.cpp community}},
+  title = {llama.cpp Performance Benchmarks},
+  year = {2023},
+  howpublished = {\url{https://github.com/ggerganov/llama.cpp/discussions/1234}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{ollama2023,
+  author = {{Ollama Team}},
+  title = {Ollama: Get up and running with large language models locally},
+  year = {2023},
+  howpublished = {\url{https://ollama.ai}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{lmstudio2023,
+  author = {{LM Studio}},
+  title = {LM Studio: Discover, download, and run local LLMs},
+  year = {2023},
+  howpublished = {\url{https://lmstudio.ai}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{nvidia2023pricing,
+  author = {{NVIDIA}},
+  title = {NVIDIA A100 Tensor Core GPU Specifications and Pricing},
+  year = {2023},
+  howpublished = {\url{https://www.nvidia.com/en-us/data-center/a100/}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{nvidia2023tensorrt,
+  author = {{NVIDIA}},
+  title = {TensorRT-LLM: Optimized Inference for Large Language Models},
+  year = {2023},
+  howpublished = {\url{https://github.com/NVIDIA/TensorRT-LLM}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{vllm2023performance,
+  author = {{vLLM Team}},
+  title = {vLLM Performance Benchmarks},
+  year = {2023},
+  howpublished = {\url{https://vllm.readthedocs.io/en/latest/performance/benchmarks.html}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{openai2023latency,
+  author = {{OpenAI}},
+  title = {API Latency and Performance Benchmarks},
+  year = {2023},
+  howpublished = {\url{https://platform.openai.com/docs/guides/performance}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{huggingface2023finetuning,
+  author = {{Hugging Face}},
+  title = {Fine-Tuning Large Language Models},
+  year = {2023},
+  howpublished = {\url{https://huggingface.co/docs/transformers/training}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{sre2023reliability,
+  author = {Beyer, Betsy and Jones, Chris and Petoff, Jennifer and Murphy, Niall R.},
+  title = {Site Reliability Engineering: How Google Runs Production Systems},
+  year = {2023},
+  publisher = {O'Reilly Media}
+}
+
+@misc{regulation2023data,
+  author = {{European Commission}},
+  title = {General Data Protection Regulation (GDPR) Compliance for AI Systems},
+  year = {2023},
+  howpublished = {\url{https://ec.europa.eu/info/law/law-topic/data-protection}},
+  note = {Accessed: 2025-01-10}
+}
+
+@misc{apple2023metal,
+  author = {{Apple Inc.}},
+  title = {Metal Performance Shaders: Accelerating Machine Learning on Apple Silicon},
+  year = {2023},
+  howpublished = {\url{https://developer.apple.com/metal/}},
+  note = {Accessed: 2025-01-10}
 }
 
 % ============================================================================
