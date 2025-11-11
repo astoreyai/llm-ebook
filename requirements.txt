@@ -57,10 +57,6 @@ seaborn==0.13.0
 # Prompt templates
 jinja2==3.1.2
 
-# Security scanning
-bandit==1.7.5
-safety==2.3.5
-
 # Citation management
 pybtex==0.24.0
 
