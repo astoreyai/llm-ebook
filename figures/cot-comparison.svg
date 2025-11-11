@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">
+    Chain-of-Thought vs Direct Prompting
+  </text>
+
+  <!-- Subtitle -->
+  <text x="300" y="55" text-anchor="middle" font-size="14" fill="#666">
+    Performance on GSM8K Math Reasoning
+  </text>
+
+  <!-- Axes -->
+  <line x1="80" y1="320" x2="520" y2="320" stroke="#333" stroke-width="2"/>
+  <line x1="80" y1="320" x2="80" y2="100" stroke="#333" stroke-width="2"/>
+
+  <!-- Y-axis labels -->
+  <text x="70" y="325" text-anchor="end" font-size="12" fill="#333">0%</text>
+  <text x="70" y="270" text-anchor="end" font-size="12" fill="#333">20%</text>
+  <text x="70" y="215" text-anchor="end" font-size="12" fill="#333">40%</text>
+  <text x="70" y="160" text-anchor="end" font-size="12" fill="#333">60%</text>
+  <text x="70" y="105" text-anchor="end" font-size="12" fill="#333">80%</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="265" x2="520" y2="265" stroke="#EEE" stroke-width="1"/>
+  <line x1="80" y1="210" x2="520" y2="210" stroke="#EEE" stroke-width="1"/>
+  <line x1="80" y1="155" x2="520" y2="155" stroke="#EEE" stroke-width="1"/>
+  <line x1="80" y1="100" x2="520" y2="100" stroke="#EEE" stroke-width="1"/>
+
+  <!-- Bar 1: Direct Prompting -->
+  <rect x="150" y="271" width="100" height="49" fill="#EF5350" stroke="#C62828" stroke-width="2" rx="3"/>
+  <text x="200" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="white">17.9%</text>
+  <text x="200" y="345" text-anchor="middle" font-size="14" fill="#333">Direct</text>
+  <text x="200" y="362" text-anchor="middle" font-size="12" fill="#666">Prompting</text>
+
+  <!-- Bar 2: CoT Prompting -->
+  <rect x="350" y="165" width="100" height="155" fill="#66BB6A" stroke="#2E7D32" stroke-width="2" rx="3"/>
+  <text x="400" y="248" text-anchor="middle" font-size="16" font-weight="bold" fill="white">57.1%</text>
+  <text x="400" y="345" text-anchor="middle" font-size="14" fill="#333">Chain-of-Thought</text>
+  <text x="400" y="362" text-anchor="middle" font-size="12" fill="#666">Prompting</text>
+
+  <!-- Improvement arrow and label -->
+  <path d="M 260 240 L 340 210" stroke="#FF9800" stroke-width="3" marker-end="url(#arrow-orange)"/>
+  <text x="300" y="220" text-anchor="middle" font-size="14" font-weight="bold" fill="#FF6F00">
+    +39.2pp
+  </text>
+  <text x="300" y="235" text-anchor="middle" font-size="11" fill="#FF6F00">
+    improvement
+  </text>
+
+  <!-- Reference citation -->
+  <rect x="100" y="375" width="400" height="20" fill="#E3F2FD" stroke="#1976D2" stroke-width="1" rx="3"/>
+  <text x="300" y="389" text-anchor="middle" font-size="10" fill="#333">
+    Source: Wei et al. (2022) "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+  </text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FF9800"/>
+    </marker>
+  </defs>
+</svg>

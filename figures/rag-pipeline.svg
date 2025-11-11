@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">
+    RAG Pipeline Architecture
+  </text>
+
+  <!-- User Query -->
+  <rect x="50" y="80" width="120" height="60" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="5"/>
+  <text x="110" y="115" text-anchor="middle" font-size="14" fill="#333">User Query</text>
+
+  <!-- Arrow 1 -->
+  <path d="M 170 110 L 230 110" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- Embedding -->
+  <rect x="230" y="80" width="120" height="60" fill="#FFF3E0" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="290" y="110" text-anchor="middle" font-size="14" fill="#333">Embed</text>
+  <text x="290" y="125" text-anchor="middle" font-size="12" fill="#666">Query</text>
+
+  <!-- Arrow 2 -->
+  <path d="M 350 110 L 410 110" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- Vector Search -->
+  <rect x="410" y="80" width="120" height="60" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+  <text x="470" y="110" text-anchor="middle" font-size="14" fill="#333">Vector</text>
+  <text x="470" y="125" text-anchor="middle" font-size="12" fill="#666">Search</text>
+
+  <!-- Arrow 3 -->
+  <path d="M 530 110 L 590 110" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- Top-K Docs -->
+  <rect x="590" y="80" width="120" height="60" fill="#E8F5E9" stroke="#388E3C" stroke-width="2" rx="5"/>
+  <text x="650" y="110" text-anchor="middle" font-size="14" fill="#333">Top-K</text>
+  <text x="650" y="125" text-anchor="middle" font-size="12" fill="#666">Documents</text>
+
+  <!-- Arrow down to LLM -->
+  <path d="M 650 140 L 650 220" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="660" y="180" font-size="12" fill="#666">Context</text>
+
+  <!-- LLM Generation -->
+  <rect x="530" y="220" width="240" height="80" fill="#FCE4EC" stroke="#C2185B" stroke-width="2" rx="5"/>
+  <text x="650" y="250" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">LLM Generation</text>
+  <text x="650" y="270" text-anchor="middle" font-size="12" fill="#666">Query + Retrieved Context</text>
+  <text x="650" y="285" text-anchor="middle" font-size="12" fill="#666">→ Generated Answer</text>
+
+  <!-- Arrow to Answer -->
+  <path d="M 650 300 L 650 330" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- Final Answer -->
+  <rect x="530" y="330" width="240" height="50" fill="#C8E6C9" stroke="#388E3C" stroke-width="3" rx="5"/>
+  <text x="650" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Grounded Answer + Citations</text>
+
+  <!-- Vector Database (side component) -->
+  <rect x="50" y="220" width="150" height="100" fill="#FFF9C4" stroke="#F9A825" stroke-width="2" rx="5"/>
+  <text x="125" y="245" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Vector Database</text>
+  <text x="125" y="265" text-anchor="middle" font-size="11" fill="#666">• Document chunks</text>
+  <text x="125" y="280" text-anchor="middle" font-size="11" fill="#666">• Embeddings</text>
+  <text x="125" y="295" text-anchor="middle" font-size="11" fill="#666">• Metadata</text>
+  <text x="125" y="310" text-anchor="middle" font-size="11" fill="#666">• Index (HNSW/IVF)</text>
+
+  <!-- Connection to Vector Search -->
+  <path d="M 200 270 L 410 110" stroke="#999" stroke-width="1" stroke-dasharray="5,5" fill="none"/>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
