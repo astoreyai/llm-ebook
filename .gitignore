@@ -41,5 +41,7 @@ secrets.yaml
 # Temporary files
 *.tmp
 *.log
-STATE/*.json
-LOGS/*.md
+
+# State management (tracked for progress)
+# STATE/*.json  # Keep state checkpoints in version control
+# LOGS/*.md     # Keep logs for audit trail
